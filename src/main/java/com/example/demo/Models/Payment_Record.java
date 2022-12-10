@@ -16,6 +16,28 @@ public class Payment_Record {
     @Column
     private String created_at;
 
+    @Column
+    private String channel_trxid;
+
+    @Column
+    private Long value;
+
+    public String getChannel_trxid() {
+        return channel_trxid;
+    }
+
+    public void setChannel_trxid(String channel_trxid) {
+        this.channel_trxid = channel_trxid;
+    }
+
+    public Long getValue() {
+        return value;
+    }
+
+    public void setValue(Long value) {
+        this.value = value;
+    }
+
     public long getCustomer_id() {
         return customer_id;
     }
