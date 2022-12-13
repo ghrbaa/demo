@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ResponseMessageService implements ResponseMessageRespository {
     @Autowired
@@ -32,7 +30,7 @@ public class ResponseMessageService implements ResponseMessageRespository {
     @Override
     public ResponseMessage getProfileByMsisdn(String msisdn) {
         ResponseMessage responseMessage = new ResponseMessage();
-        List<Data> data = pr.getProfileByMsisdn(msisdn);
+        Data data = pr.getProfileByMsisdn(msisdn);
         responseMessage.setStatus(HttpStatus.OK.value());
         responseMessage.setMessage("Success");
         responseMessage.setTransaction_id("test123456789");
@@ -45,7 +43,7 @@ public class ResponseMessageService implements ResponseMessageRespository {
     @Override
     public ResponseMessage getUnpaidRecordByMsisdn(String msisdn) {
         ResponseMessage responseMessage = new ResponseMessage();
-        List<UnpaidRecord> unpaidRecord = pr.getUnpaidRecordByMsisdn(msisdn);
+        UnpaidRecord unpaidRecord = pr.getUnpaidRecordByMsisdn(msisdn);
         responseMessage.setStatus(HttpStatus.OK.value());
         responseMessage.setMessage("Success");
         responseMessage.setTransaction_id("test123456789");

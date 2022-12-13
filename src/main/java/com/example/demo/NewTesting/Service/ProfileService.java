@@ -23,17 +23,17 @@ public class ProfileService implements ProfileRepository {
 //    }
 
     @Override
-    public List<Data> getProfileByMsisdn(String msisdn) {
+    public Data getProfileByMsisdn(String msisdn) {
         String sql = "SELECT * FROM profile WHERE msisdn = " + msisdn;
-        return template.query(sql, BeanPropertyRowMapper.newInstance(Data.class));
+        return template.queryForObject(sql, BeanPropertyRowMapper.newInstance(Data.class));
     }
 
     @Override
-    public List<UnpaidRecord> getUnpaidRecordByMsisdn(String msisdn){
+    public UnpaidRecord getUnpaidRecordByMsisdn(String msisdn){
         String sql = "SELECT loan_record.customer_id, loan_record.offer_id_choose, " +
                 "loan_record.channel_trxid, loan_record.value, loan_record.initiate_offer_time, " +
                 "loan_record.due_date FROM loan_record INNER JOIN profile ON loan_record.customer_id = " +
                 "profile.customer_id WHERE profile.msisdn = " + msisdn;
-        return template.query(sql, BeanPropertyRowMapper.newInstance(UnpaidRecord.class));
+        return template.queryForObject(sql, BeanPropertyRowMapper.newInstance(UnpaidRecord.class));
     }
 }
