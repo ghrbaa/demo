@@ -1,12 +1,12 @@
 package com.example.demo.NewTesting.Repo;
 
-import com.example.demo.NewTesting.Models.Profile;
+import com.example.demo.NewTesting.Models.Data;
 
 import java.util.List;
 
 public interface ProfileRepository {
 
-    List<Profile> getAllProfile();
+    List<Data> getAllProfile();
 
-    List<Profile> getProfileByMsisdn(String msisdn);
+    List<Data> getProfileByMsisdn(String msisdn);
 }

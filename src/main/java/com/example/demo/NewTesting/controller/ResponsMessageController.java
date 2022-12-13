@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/testing")
+@RequestMapping("/api/testing/{msisdn}")
 public class ResponsMessageController {
     @Autowired
     ResponseMessageRespository rmr;
@@ -27,7 +27,7 @@ public class ResponsMessageController {
         }
     }
 
-    @GetMapping("/get_id/{msisdn}")
+    @GetMapping
     public ResponseEntity<ResponseMessage> getById(@PathVariable String msisdn){
         ResponseMessage responseMessage = rmr.getProfileByMsisdn(msisdn);
 

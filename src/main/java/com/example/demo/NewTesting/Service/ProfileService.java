@@ -1,6 +1,6 @@
 package com.example.demo.NewTesting.Service;
 
-import com.example.demo.NewTesting.Models.Profile;
+import com.example.demo.NewTesting.Models.Data;
 import com.example.demo.NewTesting.Repo.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -15,15 +15,14 @@ public class ProfileService implements ProfileRepository {
     @Autowired
     JdbcTemplate template;
     @Override
-    public List<Profile> getAllProfile() {
+    public List<Data> getAllProfile() {
         String sql ="SELECT * FROM profile";
-        return template.query(sql, BeanPropertyRowMapper.newInstance(Profile.class));
+        return template.query(sql, BeanPropertyRowMapper.newInstance(Data.class));
     }
 
     @Override
-    public List<Profile> getProfileByMsisdn(String msisdn) {
+    public List<Data> getProfileByMsisdn(String msisdn) {
         String sql = "SELECT * FROM profile WHERE msisdn = " + msisdn;
-        return template.query(sql, BeanPropertyRowMapper.newInstance(Profile.class));
+        return template.query(sql, BeanPropertyRowMapper.newInstance(Data.class));
     }
-
 }
