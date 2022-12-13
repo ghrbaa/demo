@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/testing/{msisdn}")
+@RequestMapping("/api/testing")
 public class ResponsMessageController {
     @Autowired
     ResponseMessageRespository rmr;
 
-    @GetMapping("/get_all")
-    public ResponseEntity<ResponseMessage> gettingAll(){
-        ResponseMessage response = rmr.gettingAll();
+    @GetMapping("/unpaid/{msisdn}")
+    public ResponseEntity<ResponseMessage> getUnpaid(@PathVariable String msisdn){
+        ResponseMessage response = rmr.getUnpaidRecordByMsisdn(msisdn);
 
         if(response.getStatus()== HttpStatus.OK.value()){
             return ResponseEntity.status(200).body(response);
@@ -27,7 +27,7 @@ public class ResponsMessageController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/data/{msisdn}")
     public ResponseEntity<ResponseMessage> getById(@PathVariable String msisdn){
         ResponseMessage responseMessage = rmr.getProfileByMsisdn(msisdn);
 

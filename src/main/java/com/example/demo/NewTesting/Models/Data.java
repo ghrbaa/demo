@@ -5,8 +5,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 //@Entity
-//@Table(name = "profile")
-
+@Table(name = "profile")
 @lombok.Data
 @NoArgsConstructor
 public class Data {
