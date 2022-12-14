@@ -1,16 +1,15 @@
-package com.example.demo.NewTesting.Models;
+package com.example.demo.NewTesting.Models.Entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
-import java.sql.Date;
 
 @Table(name = "loan_record")
 @Data
 @NoArgsConstructor
-public class UnpaidRecord {
+public class PaidRecord {
 
     @Column(name = "offer_id_choose")
     private String offer_id_choose;
@@ -19,8 +18,8 @@ public class UnpaidRecord {
     @Column(name = "value")
     private Integer value;
     @Column(name = "initiate_offer_time")
-    private Date initiate_offer_time;
+    private String initiate_offer_time;
     @Column(name = "due_date")
-    private Date due_date;
+    private String due_date;
 
 }

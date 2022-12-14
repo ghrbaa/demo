@@ -1,4 +1,4 @@
-package com.example.demo.NewTesting.Models;
+package com.example.demo.NewTesting.Models.Entity;
 
 import lombok.NoArgsConstructor;
 

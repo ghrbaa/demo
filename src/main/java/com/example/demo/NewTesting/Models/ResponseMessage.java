@@ -1,4 +1,4 @@
-package com.example.demo.NewTesting.model;
+package com.example.demo.NewTesting.Models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,4 @@ public class ResponseMessage {
     private Object unpaid_record;
     private Object paid_record;
     private Object payment_record;
-
-
 }

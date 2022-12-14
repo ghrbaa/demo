@@ -1,18 +1,59 @@
 package com.example.demo.NewTesting.Service;
 
-import com.example.demo.NewTesting.Models.Data;
-import com.example.demo.NewTesting.Models.UnpaidRecord;
-import com.example.demo.NewTesting.Repo.ProfileRepository;
+import com.example.demo.NewTesting.Models.Entity.Data;
+import com.example.demo.NewTesting.Models.Entity.PaymentRecord;
+import com.example.demo.NewTesting.Models.Entity.PaidRecord;
+import com.example.demo.NewTesting.Repo.EntiyRepository;
 import com.example.demo.NewTesting.Repo.ResponseMessageRespository;
-import com.example.demo.NewTesting.model.ResponseMessage;
+import com.example.demo.NewTesting.Models.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ResponseMessageService implements ResponseMessageRespository {
     @Autowired
-    ProfileRepository pr;
+    EntiyRepository pr;
+
+    @Override
+    public ResponseMessage getProfileByMsisdn(String msisdn) {
+        ResponseMessage responseMessage = new ResponseMessage();
+        Data data = pr.getProfileByMsisdn(msisdn);
+        List<PaidRecord> unpaidRecords = pr.getUnpaidRecordByMsisdn(msisdn);
+        List<PaidRecord> paidRecords = pr.getPaidRecordByMsisdn(msisdn);
+        List<PaymentRecord> paymentRecords = pr.getPaymentRecordByMsisdn(msisdn);
+        responseMessage.setStatus(HttpStatus.OK.value());
+        responseMessage.setMessage("Success");
+        responseMessage.setTransaction_id("test123456789");
+        responseMessage.setQuery_trx_id("QUERY2212021405241919181289");
+        responseMessage.setTook(136);
+        responseMessage.setData(data);
+        responseMessage.setUnpaid_record(unpaidRecords);
+        responseMessage.setPaid_record(paidRecords);
+        responseMessage.setPayment_record(paymentRecords);
+        return responseMessage;
+    }
+
+
+//    @Override
+//    public ResponseMessage getProfileByMsisdn(String msisdn) {
+//        ResponseMessage responseMessage = new ResponseMessage();
+//        Data data = pr.getProfileByMsisdn(msisdn);
+//        List<UnpaidRecord> unpaidRecords = pr.getUnpaidRecordByMsisdn(msisdn);
+//        List<PaymentRecord> paymentRecords = pr.getPaymentRecordByMsisdn(msisdn);
+//        responseMessage.setStatus(HttpStatus.OK.value());
+//        responseMessage.setMessage("Success");
+//        responseMessage.setTransaction_id("test123456789");
+//        responseMessage.setQuery_trx_id("QUERY2212021405241919181289");
+//        responseMessage.setTook(136);
+//        responseMessage.setData(data);
+//        responseMessage.setUnpaid_record(unpaidRecords);
+//        responseMessage.setPaid_record("[]");
+//        responseMessage.setPayment_record(paymentRecords);
+//        return responseMessage;
+//    }
 
 //    @Override
 //    public ResponseMessage gettingAll() {
@@ -27,30 +68,20 @@ public class ResponseMessageService implements ResponseMessageRespository {
 //        return response;
 //    }
 
-    @Override
-    public ResponseMessage getProfileByMsisdn(String msisdn) {
-        ResponseMessage responseMessage = new ResponseMessage();
-        Data data = pr.getProfileByMsisdn(msisdn);
-        responseMessage.setStatus(HttpStatus.OK.value());
-        responseMessage.setMessage("Success");
-        responseMessage.setTransaction_id("test123456789");
-        responseMessage.setQuery_trx_id("QUERY2212021405241919181289");
-        responseMessage.setTook(136);
-        responseMessage.setData(data);
-        return responseMessage;
-    }
-
-    @Override
-    public ResponseMessage getUnpaidRecordByMsisdn(String msisdn) {
-        ResponseMessage responseMessage = new ResponseMessage();
-        UnpaidRecord unpaidRecord = pr.getUnpaidRecordByMsisdn(msisdn);
-        responseMessage.setStatus(HttpStatus.OK.value());
-        responseMessage.setMessage("Success");
-        responseMessage.setTransaction_id("test123456789");
-        responseMessage.setQuery_trx_id("QUERY2212021405241919181289");
-        responseMessage.setTook(136);
-        responseMessage.setUnpaid_record(unpaidRecord);
-        return responseMessage;
-    }
+//    @Override
+//    public ResponseMessage getUnpaidRecordByMsisdn(String msisdn) {
+//        ResponseMessage responseMessage = new ResponseMessage();
+//        List<UnpaidRecord> unpaidRecord = pr.getUnpaidRecordByMsisdn(msisdn);
+//        responseMessage.setStatus(HttpStatus.OK.value());
+//        responseMessage.setMessage("Success");
+//        responseMessage.setTransaction_id("test123456789");
+//        responseMessage.setQuery_trx_id("QUERY2212021405241919181289");
+//        responseMessage.setTook(136);
+//        responseMessage.setData("{}");
+//        responseMessage.setUnpaid_record(unpaidRecord);
+//        responseMessage.setPaid_record("{}");
+//        responseMessage.setPayment_record("{}");
+//        return responseMessage;
+//    }
 
 }
