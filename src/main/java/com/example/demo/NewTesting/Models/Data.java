@@ -1,8 +1,9 @@
-package com.example.demo.NewTesting.Models.Entity;
+package com.example.demo.NewTesting.Models;
 
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 //@Entity
 @Table(name = "profile")

@@ -1,8 +1,8 @@
 package com.example.demo.NewTesting.Service;
 
-import com.example.demo.NewTesting.Models.Entity.Data;
-import com.example.demo.NewTesting.Models.Entity.PaymentRecord;
-import com.example.demo.NewTesting.Models.Entity.PaidRecord;
+import com.example.demo.NewTesting.Models.Data;
+import com.example.demo.NewTesting.Models.PaymentRecord;
+import com.example.demo.NewTesting.Models.PaidRecord;
 import com.example.demo.NewTesting.Repo.EntiyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

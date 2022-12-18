@@ -1,14 +1,17 @@
 package com.example.demo.NewTesting.Service;
 
-import com.example.demo.NewTesting.Models.Entity.Data;
-import com.example.demo.NewTesting.Models.Entity.PaymentRecord;
-import com.example.demo.NewTesting.Models.Entity.PaidRecord;
+import com.example.demo.NewTesting.DTO.DataAndPaidDTO;
+import com.example.demo.NewTesting.Models.Data;
+import com.example.demo.NewTesting.Models.PaymentRecord;
+import com.example.demo.NewTesting.Models.PaidRecord;
 import com.example.demo.NewTesting.Repo.EntiyRepository;
 import com.example.demo.NewTesting.Repo.ResponseMessageRespository;
 import com.example.demo.NewTesting.Models.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -34,6 +37,24 @@ public class ResponseMessageService implements ResponseMessageRespository {
         responseMessage.setPaid_record(paidRecords);
         responseMessage.setPayment_record(paymentRecords);
         return responseMessage;
+    }
+
+    public DataAndPaidDTO getCustom(String msisdn) {
+        Data data = pr.getProfileByMsisdn(msisdn);
+//        List<PaidRecord> unpaidRecords = pr.getUnpaidRecordByMsisdn(msisdn);
+        List<PaidRecord> paidRecords = pr.getPaidRecordByMsisdn(msisdn);
+//        List<PaymentRecord> paymentRecords = pr.getPaymentRecordByMsisdn(msisdn);
+//        responseMessage.setStatus(HttpStatus.OK.value());
+//        responseMessage.setMessage("Success");
+//        responseMessage.setTransaction_id("test123456789");
+//        responseMessage.setQuery_trx_id("QUERY2212021405241919181289");
+//        responseMessage.setTook(136);
+//        responseMessage.setData(data);
+//        responseMessage.setUnpaid_record(unpaidRecords);
+//        responseMessage.setPaid_record(paidRecords);
+//        responseMessage.setPayment_record(paymentRecords);
+        DataAndPaidDTO dataAndPaidDTO = new DataAndPaidDTO(data, paidRecords);
+        return dataAndPaidDTO;
     }
 
 
